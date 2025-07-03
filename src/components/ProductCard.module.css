@@ -1,0 +1,88 @@
+
+.card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.imageLink {
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.quickAdd {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.quickAdd button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wishlist {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.wishlist input {
+  display: none;
+}
+
+.wishlist label {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 1rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.title a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.subtitle {
+  display: block;
+  color: #777;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.price {
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}

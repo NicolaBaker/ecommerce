@@ -5,105 +5,111 @@ import styles from "./ProductDetail.module.css";
 import { useCart } from "../context/CartContext";
 
 const ProductDetail = () => {
+
+
   const { addToCart, openCart } = useCart();
+
   const { id } = useParams();
   const location = useLocation();
   const product = products.find((p) => p.id === id);
-
-  // Valeurs initiales par défaut
   const [selectedColor, setSelectedColor] = useState(product?.colors[0] || "");
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [stock, setStock] = useState(0);
 
   useEffect(() => {
-    // Si on vient du panier avec state, préremplir
+
     if (location.state) {
       if (location.state.color) setSelectedColor(location.state.color);
       if (location.state.size) setSelectedSize(location.state.size);
+      
       if (location.state.quantity) setQuantity(location.state.quantity);
     }
   }, [location.state]);
 
+  useEffect(() => {
+    if (selectedSize && product?.stock) {
+      setStock(product.stock[selectedSize] || 0);
+    }
+  }, [selectedSize, product]);
+
   if (!product) return <p>Produit introuvable</p>;
 
-  const availableSizes = [
-    "5", "5.5", "6", "6.5", "7", "7.5",
-    "8", "8.5", "9", "9.5", "10", "10.5", "11", "12"
-  ];
-
-  const handleAddToBag = () => {
+  const addToBag = () => {
     if (!selectedSize) {
       alert("Veuillez sélectionner une taille.");
       return;
     }
-    addToCart({
-      id: product.id,
-      name: product.name,
-      image: product.image,
-      price: product.price,
-      color: selectedColor,
-      size: selectedSize,
-      quantity: quantity,
+    if (stock === 0) {
+      alert("Cette taille est en rupture de stock.");
+      return;
+    }
+    if (quantity > stock) {
+      alert(`Stock insuffisant. Quantité disponible : ${stock}`);
+      return;
+    }
+    addToCart({id: product.id, name: product.name, image: product.image, price: product.price, color: selectedColor,
+      size: selectedSize, quantity: quantity, stock: product.stock,
     });
     if (openCart) openCart();
+
   };
 
   return (
     <div className={styles.container}>
+
       <div>
         <img src={product.image} alt={product.name} className={styles.image} />
+
+        {product.imageG && (
+
+          <img src={product.imageG} alt={`${product.name} - vue 2`} className={styles.image} />
+        )}
       </div>
+
       <div>
         <h1 className={styles.title}>{product.name}</h1>
         <p className={styles.description}>{product.description}</p>
         <p className={styles.details}>{product.details}</p>
         <p className={styles.price}>${product.price}</p>
 
-        {/* Couleurs */}
+
+        {/* Couleur*/}
         <div className={styles.colorOptions}>
-          <h3>Color:</h3>
+          <h3>Couleur:</h3>
+
           {product.colors.map((color) => (
-            <button
-              key={color}
-              onClick={() => setSelectedColor(color)}
-              className={`${styles.colorButton} ${selectedColor === color ? styles.selected : ""}`}
-            >
+            <button key={color} onClick={() => setSelectedColor(color)} className={`${styles.colorButton} ${selectedColor === color ? styles.selected : ""}`}>
               {color}
             </button>
           ))}
         </div>
 
+
         {/* Tailles */}
         <div className={styles.sizeOptions}>
-          <h3>Size:</h3>
-          {availableSizes.map((size) => (
-            <button
-              key={size}
-              onClick={() => setSelectedSize(size)}
-              className={`${styles.sizeButton} ${selectedSize === size ? styles.selected : ""}`}
-            >
-              {size}
-            </button>
+          <h3>Taille:</h3>
+          {product.taille.map((size) => (
+            <button key={size} onClick={() => setSelectedSize(size)} className={`${styles.sizeButton} ${selectedSize === size ? styles.selected : ""}`}>{size}</button>
           ))}
         </div>
+        {selectedSize && (
+          <p className={styles.stock}>Stock disponible: <strong>{stock}</strong></p>
+        )}
 
-        {/* Quantité */}
         <div className={styles.quantityContainer}>
+
           <label>Quantité: </label>
-          <input
-            type="number"
-            min="1"
-            value={quantity}
-            onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
+          <input type="number" min="1" max={stock} value={quantity}
+            onChange={(e) => setQuantity(Math.min(parseInt(e.target.value) || 1, stock))}
             className={styles.quantityInput}
           />
         </div>
-
-        <button className={styles.addToBag} onClick={handleAddToBag}>
-          Add to Bag
-        </button>
+        <button className={styles.addToBag} onClick={addToBag}>Ajouter au panier</button>
+        
       </div>
     </div>
+
   );
 };
 

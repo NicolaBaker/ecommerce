@@ -33,7 +33,7 @@ function App() {
           <Route path="/paiement" element={<CheckoutPage />} />
           <Route path="/confirmation" element={<ConfirmationPage />} />
         </Routes>
-
+        
         {/* Panier drawer visible sur toutes les pages */}
         <CartPortal />
       </Router>

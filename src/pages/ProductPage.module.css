@@ -1,4 +1,4 @@
-
+/*Tous les produit*/
 .container {
   padding: 20px;
   max-width: 1200px;
@@ -6,30 +6,77 @@
 }
 
 .title {
-  margin-bottom: 20px;
-  font-size: 2rem;
+  margin-bottom: 19px;
+  font-size: 33px;
   font-weight: bold;
+  color: #222;
 }
-
 .content {
   display: flex;
   gap: 20px;
+  align-items: flex-start;
 }
-
 
 .sidebar {
-  flex: 0 0 220px;
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-  height: fit-content;
+  flex: 0 0 200px;
+  border: 1px solid #ddd;
+  padding: 21px;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Grille de produits */
+
+.sidebar h3 {
+  font-size: 18px;
+  margin-bottom: 9px;
+  margin-top: 24px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+
+.searchInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.sidebar label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  margin: 6px 0;
+  cursor: pointer;
+}
+.sidebar input[type="checkbox"],
+.sidebar input[type="radio"] {
+  accent-color: #000000;
+  cursor: pointer;
+}
+.sidebar div {
+  margin-bottom: 4px;
+}
 .productGrid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
+}
+
+@media (max-width: 800px) {
+
+  .content {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }

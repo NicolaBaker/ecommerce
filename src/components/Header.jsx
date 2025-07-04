@@ -1,22 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 import styles from "./Header.module.css";
-import { useCart } from "../context/CartContext"; // Assure-toi d'avoir ce contexte
+import logo from "../img/NAL.png";
 
 const Header = () => {
   const { openCart, cartItems } = useCart();
 
   return (
     <header className={styles.header}>
-      <h1 className={styles.logo}>New All</h1>
+      <div className={styles.logo}>
+         <Link to="/">
+            <img src={logo} alt="New All" className={styles.logoImage} />
+          </Link>
+      </div>
+
+
+      {/* Menu des liens */}
       <nav className={styles.nav}>
         <Link to="/" className={styles.link}>Accueil</Link>
         <Link to="/produits" className={styles.link}>Produits</Link>
-        <Link to="/paiement" className={styles.link}>Panier</Link>
       </nav>
-      <button onClick={openCart}>
-        Panier ({cartItems.length})
-      </button>
+
+      <div className={styles.cartSection}>
+        <div className={styles.cartButton} onClick={openCart}>
+
+          <span role="img" aria-label="cart"><img src="https://www.pngplay.com/wp-content/uploads/4/Shopping-Cart-PNG-Free-File-Download.png" alt="Panier"/></span>
+          <span className={styles.cartCount}>{cartItems.length}</span>
+        </div>
+      </div>
     </header>
   );
 };

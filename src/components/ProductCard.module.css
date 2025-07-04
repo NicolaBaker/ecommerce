@@ -1,4 +1,4 @@
-
+/*Les carte pour les produit*/
 .card {
   background-color: #fff;
   border: 1px solid #e0e0e0;
@@ -7,6 +7,7 @@
   position: relative;
   transition: transform 0.2s ease-in-out;
 }
+
 
 .card:hover {
   transform: translateY(-4px);
@@ -56,22 +57,20 @@
 .wishlist input {
   display: none;
 }
-
 .wishlist label {
   font-size: 20px;
   cursor: pointer;
 }
-
 .title {
   font-size: 1rem;
   margin: 1rem 0 0.5rem;
 }
-
 .title a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
 }
+
 
 .subtitle {
   display: block;
@@ -85,4 +84,24 @@
   font-weight: bold;
   font-size: 1rem;
   margin-top: 0.5rem;
+}
+
+
+.imageWrapper {
+  position: relative;
+}
+
+.saleBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: crimson;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 2;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }

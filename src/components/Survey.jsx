@@ -1,24 +1,35 @@
 import { useState } from "react";
 
 const Survey = () => {
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
+
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // Quand on clique sur une étoile
+  const starClick = (value) => {
+    setRating(value);
     setSent(true);
   };
 
   return (
-    <div>
-      <h3>Votre avis nous intéresse !</h3>
+    <div style={{ textAlign: "center", marginTop: "0" }}>
+      {/* user a envoyé sa note, on dit merci */}
       {sent ? (
-        <p>Merci pour votre réponse ! 😊</p>
+        <p>Merci pour votre note de {rating} étoile(s) !</p>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <label>Comment avez-vous trouvé le site ?</label>
-          <textarea required />
-          <button type="submit">Envoyer</button>
-        </form>
+        <>
+          {/* Montre les étoiles pour qu’il vote */}
+          <div style={{ fontSize: "2rem", marginBottom: "20px" }}>
+
+            {[1, 2, 3, 4, 5].map((star) => (
+              
+              <span key={star} onClick={() => starClick(star)}
+                onMouseEnter={() => setHover(star)} onMouseLeave={() => setHover(0)}
+                style={{ cursor: "pointer", color: (hover || rating) >= star ? "#fcc109" : "#e4e5e9",}}>★</span>
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

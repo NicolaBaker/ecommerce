@@ -40,22 +40,6 @@ const products = [
     }
   },
   {
-    id: "Logo",
-    name: "Chandail Logo",
-    description: "T-shirt unisexe avec notre logo imprimé",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmBOxtot15Q3aSHCGonzrli3EYqFCPiKWttQ&s",
-    price: 40,
-    colors: ["Bleu"],
-    details: "T-shirt stylé avec impression du logo de la marque.",
-    genre: "Unisexe",
-    taille: ["P", "M", "G", "TG", "TTG"],
-    sale: true,
-    stock: {P: 78,M: 8,G: 74,
-      TG: 3,
-      TTG: 8
-    }
-  },
-  {
     id: "ÉditionLimitée",
     name: "T-Shirt Édition Limitée",
     description: "Design unique fait au Canada",
@@ -79,7 +63,7 @@ const products = [
     colors: ["Bleu"],
     details: "Parfait pour relaxer ou sortir l'été.",
     genre: "Femme",
-    taille: ["P", "M", "L", "XL", "XXL"],
+    taille: ["P", "M", "G", "TG", "TTG"],
     sale: true,
     stock: {P: 34,
       M: 74,
@@ -218,7 +202,22 @@ const products = [
     taille: ["M", "G", "TG"],
     sale: false,
     stock: { M: 36, G: 33, TG: 23 }
-  },
+  },{
+    id: "Logo",
+    name: "Chandail Logo",
+    description: "T-shirt unisexe avec notre logo imprimé",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmBOxtot15Q3aSHCGonzrli3EYqFCPiKWttQ&s",
+    price: 40,
+    colors: ["Bleu"],
+    details: "T-shirt stylé avec impression du logo de la marque.",
+    genre: "Unisexe",
+    taille: ["P", "M", "G", "TG", "TTG"],
+    sale: true,
+    stock: {P: 78,M: 8,G: 74,
+      TG: 3,
+      TTG: 8
+    }
+  }
   
 ];
 

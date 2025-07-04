@@ -7,7 +7,6 @@
   max-width: 1200px;
   margin: 0 auto;
   background-color: #f6f6f6;
-  font-family: Arial, sans-serif;
 }
 
 .leftSide {
@@ -232,7 +231,7 @@ input[type="email"] {
 .productRow button {
   margin-left: auto;
   background: none;
-  color: #0071e3;
+  color: #8d8d8d;
   border: none;
   cursor: pointer;
   font-weight: 500;

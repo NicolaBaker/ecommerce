@@ -5,6 +5,7 @@ import ProductPage from "./pages/ProductPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ConfirmationPage from "./pages/ConfirmationPage";
 import Header from "./components/Header";
+
 import ProductDetail from "./pages/ProductDetail";
 import CartDrawer from "./components/CartDrawer"; 
 import { CartProvider, useCart } from "./context/CartContext";
@@ -26,14 +27,16 @@ function App() {
     <CartProvider>
       <Router>
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/produits" element={<ProductPage />} />
-          <Route path="/produit/:id" element={<ProductDetail />} />
-          <Route path="/paiement" element={<CheckoutPage />} />
-          <Route path="/confirmation" element={<ConfirmationPage />} />
-        </Routes>
-        
+        <div>
+          <Routes>
+            <Route path="/ecommerce" element={<Home />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/produits" element={<ProductPage />} />
+            <Route path="/produit/:id" element={<ProductDetail />} />
+            <Route path="/paiement" element={<CheckoutPage />} />
+            <Route path="/confirmation" element={<ConfirmationPage />} />
+          </Routes>
+        </div>
         {/* Panier drawer visible sur toutes les pages */}
         <CartPortal />
       </Router>

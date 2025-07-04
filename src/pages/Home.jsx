@@ -1,17 +1,15 @@
-import React from "react";
 import styles from "./Home.module.css";
 import Survey from "../components/Survey";
 import { Link } from "react-router-dom";
 import img1 from '../img/nb1.jpg';
-import img2 from '../img/nb3.jpg';
 
 const Home = () => {
   return (
     <div className={styles.container}>
       {/* promo */}
-      <section className={styles.promoSection} style={{ backgroundImage: `url(${img2})` }} >
+      <section className={styles.promoSection} >
         <h2>🔥 SOLDES D'ÉTÉ - Jusqu’à 50 % de rabais 🔥</h2>
-        <p>Profitez de nos meilleures offres sur vêtements.<strong> Jusqu'au 29 juillet seulement.</strong></p>
+        <p>Profitez de nos meilleures offres sur nos vêtements.<strong> Jusqu'au 29 juillet seulement.</strong></p>
         <Link to="/produits"><button className={styles.secondaryBtn}>Voir les offres</button></Link>
       </section>
 
@@ -32,13 +30,14 @@ const Home = () => {
         <h2>Pourquoi choisir notre marque ?</h2>
 
         <ul className={styles.benefitsList}>
+          <li>Chez nous, nous croyons que chaque vêtement raconte une histoire et on espère que la vôtre commence ici.</li>
           <li>Vêtements conçus et fabriqués au Canada, dans le respect des travailleurs</li>
-          <li>Aucune exploitation : nos produits sont fabriqués par des adultes rémunérés équitablement</li>
-          <li>Matières écoresponsables : coton biologique et tissus recyclés quand possible</li>
+          <li>Aucune exploitation, nos produits sont fabriqués par des adultes rémunérés équitablement</li>
+          <li>Matières écoresponsables, coton biologique et tissus recyclés quand possible</li>
           <li>Design simple, moderne et pensé pour durer</li>
-
           <li>Production en petite quantité pour limiter le gaspillage</li>
           <li>Chaque chandail et t-shirt est pensé avec conscience, pour un impact positif</li>
+          <li>J’ai conçu cette marque avec une idée simple, offrir des vêtements qui ont du sens.</li>
         </ul>
       </section>
 
